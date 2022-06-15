@@ -3,7 +3,8 @@ let player1Score=0;
 let player2Score=0;
 let winningScore=5;
 let gameOver=false;
-let turnPlayer="p1";
+const players=["p1", "p2"];
+let turnPlayer=players[Math.floor(Math.random() * players.length)];
 
 //selector
 let p1sEle = document.querySelector("#p1Score");
@@ -56,12 +57,15 @@ function reset(){
     player2Score=0;
     winningScore=5;
     gameOver=false;
-    turnPlayer="p1";
     playingToEle.textContent=winningScore;
     p1sEle.textContent=player1Score;
     p2sEle.textContent=player2Score;
-    p1btnEle.removeAttribute('disabled');
-    p2btnEle.removeAttribute('disabled');
+    turnPlayer==="p2"
+? p1btnEle.setAttribute('disabled', 'disabled')
+: p2btnEle.setAttribute('disabled', 'disabled');
+    // p1btnEle.removeAttribute('disabled');
+    // p2btnEle.removeAttribute('disabled');
+    // turnPlayer=players[Math.floor(Math.random() * players.length)];
 }
 
 p1btnEle.addEventListener("click", (e)=>{
